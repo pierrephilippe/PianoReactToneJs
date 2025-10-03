@@ -60,9 +60,16 @@ const Piano: React.FC = () => {
         <button
           key={note}
           className={`key ${type} ${activeNotes.includes(note) ? 'active' : ''}`}
+          // Événements pour la souris
           onMouseDown={() => playNote(note)}
           onMouseUp={() => stopNote(note)}
           onMouseLeave={() => stopNote(note)} // Arrête la note si la souris quitte le bouton
+          // Événements pour le tactile
+          onTouchStart={(e) => {
+            e.preventDefault();
+            playNote(note);
+          }}
+          onTouchEnd={() => stopNote(note)}
         >
           <div className="key-text">
             <span className="key-keyboard">{key?.toUpperCase()}</span>
