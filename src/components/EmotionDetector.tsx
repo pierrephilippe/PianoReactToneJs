@@ -64,7 +64,7 @@ const EmotionDetector: React.FC<EmotionDetectorProps> = ({ isPaused, onEmotionCh
 
         if (detections.length > 0) {
           const expressions = detections[0].expressions;
-          const dominantEmotion = Object.keys(expressions).reduce((a, b) =>
+          const dominantEmotion = (Object.keys(expressions) as Array<keyof faceapi.FaceExpressions>).reduce((a, b) =>
             expressions[a] > expressions[b] ? a : b
           );
           onEmotionChange(dominantEmotion);

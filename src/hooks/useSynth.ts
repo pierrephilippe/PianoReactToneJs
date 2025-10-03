@@ -29,8 +29,10 @@ export function useSynth() {
     synthRef.current?.triggerAttackRelease(notes, duration);
   };
 
-  const setOscillator = (type: Tone.OscillatorType) => {
-    synthRef.current?.set({ oscillator: { type } });
+  const setOscillator = (type: Tone.ToneOscillatorType) => {
+    // On utilise une assertion de type ici pour résoudre le conflit de types de Tone.js.
+    // C'est sûr car nous ne passons que des types d'oscillateurs de base.
+    synthRef.current?.set({ oscillator: { type: type as any } });
   };
 
   return { playNote, stopNote, playChord, setOscillator };

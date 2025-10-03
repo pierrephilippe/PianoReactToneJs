@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import * as Tone from 'tone';
 import { Chord } from '@tonaljs/tonal';
 import { useSynth } from '../hooks/useSynth';
@@ -24,8 +24,8 @@ interface MusicContextType {
   suggestedChordType: string;
 
   // Contrôles du son
-  oscillator: Tone.OscillatorType;
-  setOscillator: (type: Tone.OscillatorType) => void;
+  oscillator: Tone.ToneOscillatorType;
+  setOscillator: (type: Tone.ToneOscillatorType) => void;
 }
 
 const MusicContext = createContext<MusicContextType | undefined>(undefined);
@@ -77,7 +77,7 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [activeNotes, setActiveNotes] = useState<string[]>([]);
   const [detectedChord, setDetectedChord] = useState('');
   const [emotion, setEmotionState] = useState('...');
-  const [oscillator, setOscillatorState] = useState<Tone.OscillatorType>('sine');
+  const [oscillator, setOscillatorState] = useState<Tone.ToneOscillatorType>('sine');
   const [isUserPlaying, setIsUserPlaying] = useState(false);
   const [sourceOfEmotion, setSourceOfEmotion] = useState<'user' | 'webcam'>('webcam');
   const [lastPlayedEmotion, setLastPlayedEmotion] = useState('');
@@ -104,7 +104,7 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     setActiveNotes(prev => prev.filter(n => n !== note));
   };
 
-  const setOscillator = (type: Tone.OscillatorType) => {
+  const setOscillator = (type: Tone.ToneOscillatorType) => {
     setOscillatorState(type);
     synth.setOscillator(type);
   };

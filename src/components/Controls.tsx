@@ -23,7 +23,7 @@ export const Controls: React.FC = () => {
         <select
           id="sound-select"
           value={oscillator}
-          onChange={(e) => setOscillator(e.target.value as Tone.OscillatorType)}
+          onChange={(e) => setOscillator(e.target.value as Tone.ToneOscillatorType)}
         >
           <option value="sine">Pure (Sine)</option>
           <option value="square">Carrée (Square)</option>
