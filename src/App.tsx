@@ -1,7 +1,7 @@
-import Piano from './context/Piano';
-import EmotionDetector from './context/EmotionDetector';
-import { Controls } from './context/Controls';
-import { EmotionSmiley } from './context/EmotionSmiley';
+import Piano from './components/Piano';
+import EmotionDetector from './components/EmotionDetector';
+import { Controls } from './components/Controls';
+import { EmotionSmiley } from './components/EmotionSmiley';
 import { useMusic } from './context/MusicProvider';
 import './App.css'
 
