@@ -1,8 +1,8 @@
-import Piano from './components/Piano';
-import EmotionDetector from './components/EmotionDetector';
-import { Controls } from './components/Controls';
-import { EmotionSmiley } from './components/EmotionSmiley';
-import { useMusic } from './context/MusicProvider'; // Assurez-vous que le chemin est correct
+import Piano from './context/Piano';
+import EmotionDetector from './context/EmotionDetector';
+import { Controls } from './context/Controls';
+import { EmotionSmiley } from './context/EmotionSmiley';
+import { useMusic } from './context/MusicProvider';
 import './App.css'
 
 function App() {
@@ -15,7 +15,9 @@ function App() {
         <>
           <div className="top-container">
             <EmotionDetector onEmotionChange={setEmotion} isPaused={isEmotionDetectionPaused} />
-            <EmotionSmiley emotion={emotion} />
+            <div className="smiley-frame">
+              <EmotionSmiley emotion={emotion} />
+            </div>
           </div>
           <Controls />
           <Piano />

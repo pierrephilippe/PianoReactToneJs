@@ -1,0 +1,57 @@
+.controlsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 2rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.controlCard {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  flex: 1;
+  min-width: 250px;
+  min-height: 120px; /* Hauteur fixe pour éviter les sauts */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease-out;
+}
+
+.controlCard:hover {
+  transform: translateY(-5px);
+}
+
+.controlCard h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  color: var(--secondary-text);
+  font-weight: 500;
+}
+
+.controlCard p {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-text);
+  min-height: 2.2rem; /* Espace pour 1 ligne, évite le saut */
+}
+
+.chordDisplay { background-color: var(--chord-card-bg); }
+.emotionDisplay { background-color: var(--emotion-card-bg); }
+.soundSelector { background-color: var(--sound-card-bg); }
+
+.soundSelector select {
+  background-color: var(--card-background);
+  color: var(--primary-text);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}

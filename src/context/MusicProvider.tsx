@@ -2,31 +2,7 @@ import React, { createContext, useContext, useState, useEffect, type ReactNode }
 import * as Tone from 'tone';
 import { Chord } from '@tonaljs/tonal';
 import { useSynth } from '../hooks/useSynth';
-
-// --- Définitions des types ---
-interface MusicContextType {
-  isAudioStarted: boolean;
-  startAudio: () => Promise<void>;
-  isEmotionDetectionPaused: boolean;
-  
-  // État du piano
-  activeNotes: string[];
-  playNote: (note: string) => void;
-  stopNote: (note: string) => void;
-
-  // État des accords
-  detectedChord: string;
-
-  // État de l'émotion
-  emotion: string;
-  translatedEmotion: string;
-  setEmotion: (emotion: string) => void;
-  suggestedChordType: string;
-
-  // Contrôles du son
-  oscillator: Tone.ToneOscillatorType;
-  setOscillator: (type: Tone.ToneOscillatorType) => void;
-}
+import type { MusicContextType } from '../types';
 
 const MusicContext = createContext<MusicContextType | undefined>(undefined);
 

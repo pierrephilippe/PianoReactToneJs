@@ -1,0 +1,61 @@
+.pianoContainer {
+  display: flex;
+  position: relative;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.key {
+  border: 1px solid #333;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 1rem;
+  user-select: none;
+  transition: background-color 0.1s ease;
+}
+
+.keyText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.keyKeyboard {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.noteName {
+  font-size: 1rem;
+  color: var(--secondary-text);
+}
+
+.white {
+  width: 60px;
+  height: 240px;
+  background-color: white;
+  z-index: 1;
+  background-image: linear-gradient(to bottom, #fff, #f0f0f0);
+}
+
+.black {
+  width: 40px;
+  height: 150px;
+  background-color: black;
+  margin: 0 -20px;
+  z-index: 2;
+  background-image: linear-gradient(to bottom, #333, #000);
+}
+
+.active {
+  background-color: var(--accent-color);
+  background-image: none;
+}
+
+.black.active {
+  background-color: var(--accent-color-active);
+}

@@ -1,0 +1,13 @@
+.emotionDetectorContainer {
+  position: relative;
+  width: 360px;
+  height: 280px;
+  border: 1px solid var(--border-color);
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  overflow: hidden; /* Pour que la vidéo respecte les coins arrondis */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}

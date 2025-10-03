@@ -9,9 +9,9 @@
   --border-color: rgba(255, 255, 255, 0.1);
 
   /* --- Couleurs pour les cartes de contrôle --- */
-  --chord-card-bg: #2c283d;   /* Violet foncé */
-  --sound-card-bg: #283d28;   /* Vert foncé */
-  --emotion-card-bg: #28353d; /* Bleu foncé */
+  --chord-card-bg: #432d77;   /* Violet électrique */
+  --sound-card-bg: #1a535c;   /* Vert émeraude */
+  --emotion-card-bg: #0b4f6c; /* Bleu saphir */
 }
 
 #root {
@@ -58,181 +58,21 @@
 
 .top-container {
   margin-bottom: 2rem;
-  position: relative; /* Pour le canvas de détection */
-  min-height: 280px; /* Empêche le saut de layout */
   display: flex;
-  justify-content: center;
   gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap; /* Permet de passer à la ligne sur les petits écrans */
+  align-items: stretch; /* Pour que les enfants aient la même hauteur */
+  min-height: 280px;
 }
 
-.emotion-detector-container {
-  position: relative;
-  width: 360px;
-  height: 280px;
-  border: 1px solid var(--border-color);
-  background: #111;
+.smiley-frame {
+  flex: 1; /* Prend l'espace restant */
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
-  overflow: hidden; /* Pour que la vidéo respecte les coins arrondis */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-.emotion-smiley {
-  font-size: 6rem; /* Assez grand comme demandé */
-  line-height: 1;
-  /* L'animation se rejouera à chaque changement d'émotion grâce à la mise à jour du DOM par React */
-  animation: smiley-pop 0.5s ease-out;
-}
-
-@keyframes smiley-pop {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  80% {
-    transform: scale(1.1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-.controls-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 1000px;
-  margin-bottom: 2rem;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.control-card {
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
   border-radius: 12px;
-  padding: 1rem 1.5rem;
-  flex: 1;
-  min-width: 250px;
-  min-height: 120px; /* Hauteur fixe pour éviter les sauts */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  transition: transform 0.2s ease-out;
-}
-
-.control-card:hover {
-  transform: translateY(-5px);
-}
-
-.control-card h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.1rem;
-  color: var(--secondary-text);
-  font-weight: 500;
-}
-
-.control-card p {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--primary-text);
-  min-height: 2.2rem; /* Espace pour 1 ligne, évite le saut */
-}
-
-.chord-display {
-  background-color: var(--chord-card-bg);
-}
-
-.emotion-display {
-  background-color: var(--emotion-card-bg);
-}
-
-.sound-selector {
-  /* La classe .sound-selector est sur la div parente du select */
-  /* dans Controls.tsx, donc on peut la cibler directement. */
-  background-color: var(--sound-card-bg);
-}
-
-.piano-container {
-  display: flex;
-  position: relative;
-  margin-top: 2rem;
-  justify-content: center;
-}
-
-.key {
-  border: 1px solid #333;
-  cursor: pointer;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 1rem;
-  user-select: none;
-  transition: background-color 0.1s ease;
-}
-
-.key .key-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
-}
-
-.key .key-keyboard {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.key .note-name {
-  font-size: 1rem;
-  color: var(--secondary-text);
-}
-
-.key.white {
-  width: 60px;
-  height: 240px;
-  background-color: white;
-  z-index: 1;
-  background-image: linear-gradient(to bottom, #fff, #f0f0f0);
-}
-
-.key.black {
-  width: 40px;
-  height: 150px;
-  background-color: black;
-  margin: 0 -20px;
-  z-index: 2;
-  background-image: linear-gradient(to bottom, #333, #000);
-}
-
-.key:active, .key.active {
-  background-color: var(--accent-color);
-  background-image: none;
-}
-
-.key.black:active, .key.black.active {
-  background-color: var(--accent-color-active);
-  background-image: none;
-}
-
-/* Style pour le sélecteur de son */
-.sound-selector select {
-  background-color: var(--card-background);
-  color: var(--primary-text);
-  border: 1px solid var(--border-color);
-  padding: 0.5rem;
-  border-radius: 6px;
-  margin-left: 0.5rem;
 }
 
 /* --- Styles pour l'affichage sur mobile --- */
@@ -246,31 +86,10 @@
     gap: 1rem;
   }
 
-  .emotion-smiley {
+  /* Les styles de smiley, controls, piano sont maintenant dans leurs propres modules,
+     mais nous pouvons surcharger des tailles ici si nécessaire. */
+  .top-container > div:last-child { /* Cible EmotionSmiley */
     font-size: 4rem;
-  }
-
-  .controls-container {
-    gap: 1rem;
-  }
-
-  .control-card {
-    min-width: 200px;
-    min-height: 100px;
-    padding: 0.8rem 1rem;
-  }
-
-  .control-card p {
-    font-size: 1.2rem;
-  }
-
-  .key.white {
-    width: 45px;
-  }
-
-  .key.black {
-    width: 30px;
-    margin: 0 -15px;
   }
 }
 }
