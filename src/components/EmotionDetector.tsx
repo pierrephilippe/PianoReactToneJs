@@ -89,7 +89,7 @@ const EmotionDetector: React.FC<EmotionDetectorProps> = ({ isPaused, onEmotionCh
       {!isWebcamStarted && modelsLoaded && (
         <button onClick={startWebcam}>Activer la webcam</button>
       )}
-      <video ref={videoRef} autoPlay muted width="360" height="280" style={{ display: isWebcamStarted ? 'block' : 'none' }} />
+      <video ref={videoRef} autoPlay muted playsInline width="360" height="280" style={{ display: isWebcamStarted ? 'block' : 'none' }} />
       <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, display: isWebcamStarted ? 'block' : 'none' }} />
     </div>
   );
